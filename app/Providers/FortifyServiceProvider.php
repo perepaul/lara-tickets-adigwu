@@ -10,7 +10,6 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -37,18 +36,17 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
-
         Fortify::resetPasswordView(function () {
             return view('auth.reset-password');
         });
 
         Fortify::registerView(function (Request $request) {
             if ($request->has('ref')) {
-            session(['referrer' => $request->query('ref')]);
+                session(['referrer' => $request->query('ref')]);
             }
-            return view('auth.register');
-            });
 
+            return view('auth.register');
+        });
 
         Fortify::requestPasswordResetLinkView(function () {
             return view('auth.forgot-password');
@@ -58,10 +56,9 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.verify-email');
         });
 
-
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;
-            
+
             return Limit::perMinute(5)->by($email.$request->ip());
         });
 
