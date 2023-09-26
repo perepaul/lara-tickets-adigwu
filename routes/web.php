@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/agents/tickets', [TicketController::class, 'index'])->name('agents.tickets');
+
+Route::get('/dashboard', function () {
+    return view('agents.dashboard');
+})->name('agent-dashboard');

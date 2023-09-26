@@ -38,7 +38,7 @@
                                                Internet Not Working 
                                            </td>
                                            <td>
-                                               <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
+                                               <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar1.jpg')}}" alt="">
                                                <span class="fw-bold ms-1">Joan Dyer</span>
                                            </td>
                                            <td>
@@ -60,7 +60,7 @@
                                                 Salary Amount wrong 
                                             </td>
                                             <td>
-                                                <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
+                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar2.jpg')}}" alt="">
                                                 <span class="fw-bold ms-1">Ryan	Randall</span>
                                             </td>
                                             <td>
@@ -82,7 +82,7 @@
                                                Mouse Not working
                                             </td>
                                             <td>
-                                                <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
+                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar3.jpg')}}" alt="">
                                                 <span class="fw-bold ms-1">Phil	Glover</span>
                                             </td>
                                             <td>
@@ -104,7 +104,7 @@
                                                 punching time not proper
                                              </td>
                                             <td>
-                                                <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="">
+                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar4.jpg')}}" alt="">
                                                 <span class="fw-bold ms-1">Victor Rampling</span>
                                             </td>
                                             <td>
@@ -126,7 +126,7 @@
                                                 Leave Balance Wrong
                                               </td>
                                             <td>
-                                                <img class="avatar rounded-circle" src="assets/images/xs/avatar5.jpg" alt="">
+                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar5.jpg')}}" alt="">
                                                 <span class="fw-bold ms-1">Sally Graham</span>
                                             </td>
                                             <td>
@@ -148,7 +148,7 @@
                                                 Display Blur
                                             </td>
                                             <td>
-                                                <img class="avatar rounded-circle" src="assets/images/xs/avatar6.jpg" alt="">
+                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar6.jpg')}}" alt="">
                                                 <span class="fw-bold ms-1">Robert Anderson</span>
                                             </td>
                                             <td>
@@ -192,7 +192,7 @@
                             <li class="list-group-item py-3 text-center text-md-start">
                                 <div class="d-flex align-items-center flex-column flex-sm-column flex-md-column flex-lg-row">
                                     <div class="no-thumbnail mb-2 mb-md-0">
-                                        <img class="avatar lg rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
+                                        <img class="avatar lg rounded-circle" src="{{asset('assets/images/xs/avatar2.jpg')}}" alt="">
                                     </div>
                                     <div class="flex-fill ms-3 text-truncate">
                                         <h6 class="mb-0  fw-bold">Rachel Carr(you)</h6>
@@ -215,7 +215,7 @@
                             <li class="list-group-item py-3 text-center text-md-start">
                                 <div class="d-flex align-items-center flex-column flex-sm-column flex-md-column flex-lg-row">
                                     <div class="no-thumbnail mb-2 mb-md-0">
-                                        <img class="avatar lg rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
+                                        <img class="avatar lg rounded-circle" src="{{asset('assets/images/xs/avatar3.jpg')}}" alt="">
                                     </div>
                                     <div class="flex-fill ms-3 text-truncate">
                                         <h6 class="mb-0  fw-bold">Lucas Baker<a href="#" class="link-secondary ms-2">(Resend invitation)</a></h6>
@@ -257,7 +257,7 @@
                             <li class="list-group-item py-3 text-center text-md-start">
                                 <div class="d-flex align-items-center flex-column flex-sm-column flex-md-column flex-lg-row">
                                     <div class="no-thumbnail mb-2 mb-md-0">
-                                        <img class="avatar lg rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
+                                        <img class="avatar lg rounded-circle" src="{{asset('assets/images/xs/avatar8.jpg')}}" alt="">
                                     </div>
                                     <div class="flex-fill ms-3 text-truncate">
                                         <h6 class="mb-0  fw-bold">Una Coleman</h6>
@@ -401,13 +401,13 @@
 @endsection
 @section('js')
 <!-- Jquery Core Js -->
-<script src="assets/bundles/libscripts.bundle.js"></script>
+<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 
 <!-- Plugin Js-->
-<script src="assets/bundles/dataTables.bundle.js"></script>
+<script src="{{asset('assets/bundles/dataTables.bundle.js')}}"></script>
 
 <!-- Jquery Page Js -->
-<script src="../js/template.js"></script>
+<script src="{{asset('assets/template.js')}}"></script>
 <script>
     // project data table
     $(document).ready(function() {

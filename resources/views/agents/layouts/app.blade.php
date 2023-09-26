@@ -9,10 +9,10 @@
     <title>@yield('title') | {{ config('app.name') }}</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
     <!-- plugin css file  -->
-    <link rel="stylesheet" href="assets/plugin/datatables/responsive.dataTables.min.css">
-    <link rel="stylesheet" href="assets/plugin/datatables/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="{{asset('assets/plugin/datatables/responsive.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/plugin/datatables/dataTables.bootstrap5.min.css')}}">
     <!-- project css file  -->
-    <link rel="stylesheet" href="assets/css/my-task.style.min.css">
+    <link rel="stylesheet" href="{{asset('assets/css/my-task.style.min.css')}}">
 </head>
 
 <body>
@@ -36,7 +36,7 @@
 
                 <ul class="menu-list flex-grow-1 mt-3">
                     <li class="collapsed">
-                        <a class="m-link active" data-bs-toggle="collapse" data-bs-target="#dashboard-Components" href="{{route('agent-dashboard')}}">
+                        <a class="m-link" href="{{route('agent-dashboard')}}">
                             <i class="icofont-home fs-5"></i> <span>Dashboard</span></a>
                     </li>
 
@@ -44,7 +44,7 @@
                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-ticket"></i> <span>Tickets</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                         <!-- Menu: Sub menu ul -->
                         <ul class="sub-menu collapse" id="tikit-Components">
-                            <li><a class="ms-link" href="tickets.html"> <span>Tickets View</span></a></li>
+                            <li><a class="ms-link" href="{{route('agents.tickets')}}"> <span>Tickets View</span></a></li>
                             <li><a class="ms-link" href="ticket-detail.html"> <span>Ticket Detail</span></a></li>
                         </ul>
                     </li>
@@ -72,12 +72,12 @@
                                     <i class="icofont-info-square fs-5"></i>
                                 </a>
                                 <div class="avatar-list avatar-list-stacked px-3">
-                                    <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
-                                    <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                                    <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                                    <img class="avatar rounded-circle" src="assets/images/xs/avatar4.jpg" alt="">
-                                    <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
-                                    <img class="avatar rounded-circle" src="assets/images/xs/avatar8.jpg" alt="">
+                                    <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar2jpg')}}" alt="">
+                                    <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar1jpg')}}" alt="">
+                                    <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar3jpg')}}" alt="">
+                                    <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar4jpg')}}" alt="">
+                                    <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar7jpg')}}" alt="">
+                                    <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar8jpg')}}" alt="">
                                     <span class="avatar rounded-circle text-center pointer" data-bs-toggle="modal" data-bs-target="#addUser"><i class="icofont-ui-add"></i></span>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                                 <ul class="list-unstyled list mb-0">
                                                     <li class="py-2 mb-1 border-bottom">
                                                         <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
+                                                            <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar1jpg')}}" alt="">
                                                             <div class="flex-fill ms-2">
                                                                 <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Dylan Hunter</span> <small>2MIN</small></p>
                                                                 <span class="">Added 2021-02-19 my-Task ui/ux Design <span class="badge bg-success">Review</span></span>
@@ -117,7 +117,7 @@
                                                     </li>
                                                     <li class="py-2 mb-1 border-bottom">
                                                         <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
+                                                            <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar3jpg')}}" alt="">
                                                             <div class="flex-fill ms-2">
                                                                 <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Andrea Gill</span> <small>1HR</small></p>
                                                                 <span class="">Quality Assurance Task Completed</span>
@@ -126,7 +126,7 @@
                                                     </li>
                                                     <li class="py-2 mb-1 border-bottom">
                                                         <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar5.jpg" alt="">
+                                                            <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar5jpg')}}" alt="">
                                                             <div class="flex-fill ms-2">
                                                                 <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Diane Fisher</span> <small>13MIN</small></p>
                                                                 <span class="">Add New Project for App Developemnt</span>
@@ -135,7 +135,7 @@
                                                     </li>
                                                     <li class="py-2 mb-1 border-bottom">
                                                         <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar6.jpg" alt="">
+                                                            <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar6jpg')}}" alt="">
                                                             <div class="flex-fill ms-2">
                                                                 <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Andrea Gill</span> <small>1HR</small></p>
                                                                 <span class="">Add Timesheet For Rhinestone project</span>
@@ -144,7 +144,7 @@
                                                     </li>
                                                     <li class="py-2">
                                                         <a href="javascript:void(0);" class="d-flex">
-                                                            <img class="avatar rounded-circle" src="assets/images/xs/avatar7.jpg" alt="">
+                                                            <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar7jpg')}}" alt="">
                                                             <div class="flex-fill ms-2">
                                                                 <p class="d-flex justify-content-between mb-0 "><span class="font-weight-bold">Zoe Wright</span> <small class="">1DAY</small></p>
                                                                 <span class="">Add Calander Event</span>
@@ -164,13 +164,13 @@
                                     <small>Admin Profile</small>
                                 </div>
                                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
-                                    <img class="avatar lg rounded-circle img-thumbnail" src="assets/images/profile_av.png" alt="profile">
+                                    <img class="avatar lg rounded-circle img-thumbnail" src="{{asset('assets/images/profile_av.png')}}" alt="profile">
                                 </a>
                                 <div class="dropdown-menu rounded-lg shadow border-0 dropdown-animation dropdown-menu-end p-0 m-0">
                                     <div class="card border-0 w280">
                                         <div class="card-body pb-0">
                                             <div class="d-flex py-1">
-                                                <img class="avatar rounded-circle" src="assets/images/profile_av.png" alt="profile">
+                                                <img class="avatar rounded-circle" src="{{asset('assets/images/profile_av.png')}}" alt="profile">
                                                 <div class="flex-fill ms-3">
                                                     <p class="mb-0"><span class="font-weight-bold">Dylan Hunter</span></p>
                                                     <small class="">Dylan.hunter@gmail.com</small>
