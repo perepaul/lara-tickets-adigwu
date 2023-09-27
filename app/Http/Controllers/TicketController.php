@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TicketStatusEnum;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        return view('agents.tickets');
+        return view('agent.tickets');
     }
 
     /**
@@ -28,7 +29,13 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->user()->tickets()->create([
+            'subject' => $request->subject,
+            'body' => $request->body,
+            'attachment' => $request->attachment,
+            'priority' => $request->priority,
+            'status' => TicketStatusEnum::OPEN->value,
+        ]);
     }
 
     /**
