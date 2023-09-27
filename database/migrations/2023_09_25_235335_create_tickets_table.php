@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('title');
+            $table->foreignUuid('user_id');
+            $table->string('subject');
             $table->longText('body');
             $table->string('attachment')->nullable();
+            $table->string('priority');
             $table->string('status');
             $table->timestamps();
         });
