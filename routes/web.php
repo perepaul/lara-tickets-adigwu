@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/agents/tickets', [TicketController::class, 'index'])->name('agents.tickets');
-
-Route::get('/dashboard', function () {
-    return view('agents.dashboard');
-})->name('agent-dashboard');
+Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard'], function () {
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/agent-dashboard', 'index')->name('agent.dashboard');
+    });
+    Route::controller(TicketController::class)->group(function () {
+        Route::get('/agent-tickets', 'index')->name('agent.tickets');
+        Route::get('/agent-ticket-details', 'show')->name('agent.ticket-details');
+    });
+});
