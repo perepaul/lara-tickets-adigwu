@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TicketStatusEnum;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
-use App\Enums\TicketStatusEnum;
-use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -15,7 +14,8 @@ class TicketController extends Controller
     public function index(Request $request)
     {
         $tickets = $request->user()->tickets()->latest()
-        ->paginate(10);
+            ->paginate(10);
+
         return view('user.tickets', compact('tickets'));
     }
 
@@ -48,6 +48,7 @@ class TicketController extends Controller
     public function show(Ticket $ticketId)
     {
         $ticket = Ticket::find($ticketId)->first();
+
         return view('ticket-detail', compact('ticket'));
     }
 }
