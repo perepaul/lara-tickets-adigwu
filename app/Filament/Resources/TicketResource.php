@@ -2,25 +2,25 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use App\Models\User;
-use Filament\Tables;
-use App\Models\Ticket;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use App\Enums\TicketStatusEnum;
-use Filament\Resources\Resource;
 use App\Enums\TicketPriorityEnum;
-use Illuminate\Database\Eloquent\Builder;
+use App\Enums\TicketStatusEnum;
 use App\Filament\Resources\TicketResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\TicketResource\RelationManagers;
+use App\Models\Ticket;
+use App\Models\User;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class TicketResource extends Resource
 {
     protected static ?string $model = Ticket::class;
+
     protected static ?string $navigationLabel = 'Manage Tickets';
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     public static function form(Form $form): Form
     {
         return $form
@@ -56,7 +56,7 @@ class TicketResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('ticketId')
-                ->copyable()
+                    ->copyable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Author')

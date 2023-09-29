@@ -6,13 +6,14 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum TicketPriorityEnum: string implements HasLabel, HasColor, HasIcon
+enum TicketPriorityEnum: string implements HasColor, HasIcon, HasLabel
 {
     case HIGH = 'high';
     case MEDIUM = 'medium';
     case LOW = 'low';
 
-    public function getLabel(): ?string {
+    public function getLabel(): ?string
+    {
         return match ($this) {
             self::HIGH => 'High',
             self::MEDIUM => 'Medium',
@@ -20,7 +21,8 @@ enum TicketPriorityEnum: string implements HasLabel, HasColor, HasIcon
         };
     }
 
-    public function getColor(): ?string {
+    public function getColor(): ?string
+    {
         return match ($this) {
             self::HIGH => 'danger',
             self::MEDIUM => 'warning',
@@ -28,7 +30,8 @@ enum TicketPriorityEnum: string implements HasLabel, HasColor, HasIcon
         };
     }
 
-    public function getIcon(): ?string {
+    public function getIcon(): ?string
+    {
         return match ($this) {
             self::HIGH => 'heroicon-m-bell-alert',
             self::MEDIUM => 'heroicon-m-bell-alert',
