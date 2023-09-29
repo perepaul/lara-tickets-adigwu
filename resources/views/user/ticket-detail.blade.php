@@ -1,4 +1,4 @@
-@extends('agents.layouts.app')
+@extends('user.layouts.app')
 @section('title', 'Ticket Details')
 @section('body')
 <!-- Body: Body -->
@@ -21,7 +21,7 @@
                                     <div class="avatar lg  rounded-1 no-thumbnail bg-lightyellow color-defult"><i class="icofont-optic fs-4"></i></div>
                                     <div class="flex-fill ms-4 text-truncate">
                                         <div class="text-truncate">Status</div>
-                                        <span class="badge bg-warning">In Progress</span>
+                                        <span class="badge bg-warning">{{ $ticket->status }}</span>
                                     </div>
 
                                 </div>
@@ -49,7 +49,7 @@
                                     <div class="avatar lg  rounded-1 no-thumbnail bg-lightgreen color-defult"><i class="icofont-price fs-4"></i></div>
                                     <div class="flex-fill ms-4 text-truncate">
                                         <div class="text-truncate">Priority</div>
-                                        <span class="badge bg-danger">High</span>
+                                        <span class="badge bg-danger">{{ $ticket->priority }}</span>
                                     </div>
 
                                 </div>
@@ -61,11 +61,8 @@
                     <div class="col-md-12">
                         <div class="card mb-3">
                             <div class="card-body">
-                                <h6 class="fw-bold mb-3 text-danger">Internet Not Working</h6>
-                                <p>Vivamus blandit, odio eget tristique volutpat, eros lectus auctor lorem, vitae sagittis sapien mauris interdum ex. Donec eu eleifend massa. Donec viverra, ex ut euismod hendrerit, nunc nisi cursus est,
-                                    nec scelerisque lorem erat vel nunc. Duis non urna ornare, commodo felis ac, fringilla tortor. Nulla dui libero, dignissim et eros id, elementum rutrum risus</p>
-                                <p>Vivamus blandit, odio eget tristique volutpat, eros lectus auctor lorem, vitae sagittis sapien mauris interdum ex. Donec eu eleifend massa. Donec viverra, ex ut euismod hendrerit, nunc nisi cursus est, nec scelerisque lorem erat vel nunc. Duis non urna ornare,
-                                    commodo felis ac, fringilla tortor. Nulla dui libero, dignissim et eros id, elementum rutrum risus</p>
+                                <h6 class="fw-bold mb-3 text-danger">{{ $ticket->subject }}</h6>
+                                {{ $ticket->body }}
                             </div>
                         </div>
                         <div class="row g-3">

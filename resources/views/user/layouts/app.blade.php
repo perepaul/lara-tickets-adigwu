@@ -30,13 +30,13 @@
                             <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
                         </svg>
                     </span>
-                    <span class="logo-text">My-Task</span>
+                    <span class="logo-text">Lara Tickets</span>
                 </a>
                 <!-- Menu: main ul -->
 
                 <ul class="menu-list flex-grow-1 mt-3">
                     <li class="collapsed">
-                        <a class="m-link" href="{{route('agent-dashboard')}}">
+                        <a class="m-link" href="{{route('dashboard')}}">
                             <i class="icofont-home fs-5"></i> <span>Dashboard</span></a>
                     </li>
 
@@ -44,8 +44,11 @@
                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-ticket"></i> <span>Tickets</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                         <!-- Menu: Sub menu ul -->
                         <ul class="sub-menu collapse" id="tikit-Components">
-                            <li><a class="ms-link" href="{{route('agents.tickets')}}"> <span>Tickets View</span></a></li>
-                            <li><a class="ms-link" href="ticket-detail.html"> <span>Ticket Detail</span></a></li>
+                            @if(Auth::User()->role == 'agent')
+                                <li><a class="ms-link" href="{{route('agent.tickets')}}"> <span>View Tickets</span></a></li>
+                            @else
+                            <li><a class="ms-link" href="{{route('tickets')}}"> <span>View Tickets</span></a></li>
+                            @endforelse
                         </ul>
                     </li>
                 </ul>
@@ -160,8 +163,8 @@
                             </div>
                             <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                                 <div class="u-info me-2">
-                                    <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">Dylan Hunter</span></p>
-                                    <small>Admin Profile</small>
+                                    <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">{{ Auth::user()->name }}</span></p>
+                                    <small>{{ Auth::user()->role }} Profile</small>
                                 </div>
                                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
                                     <img class="avatar lg rounded-circle img-thumbnail" src="{{asset('assets/images/profile_av.png')}}" alt="profile">
@@ -172,8 +175,8 @@
                                             <div class="d-flex py-1">
                                                 <img class="avatar rounded-circle" src="{{asset('assets/images/profile_av.png')}}" alt="profile">
                                                 <div class="flex-fill ms-3">
-                                                    <p class="mb-0"><span class="font-weight-bold">Dylan Hunter</span></p>
-                                                    <small class="">Dylan.hunter@gmail.com</small>
+                                                    <p class="mb-0"><span class="font-weight-bold">{{ Auth::user()->name }}</span></p>
+                                                    <small class="">{{ Auth::user()->email }}</small>
                                                 </div>
                                             </div>
 
@@ -182,13 +185,8 @@
                                             </div>
                                         </div>
                                         <div class="list-group m-2 ">
-                                            <a href="task.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-tasks fs-5 me-3"></i>My Task</a>
-                                            <a href="members.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-user-group fs-6 me-3"></i>members</a>
+                                            <a href="{{route('profile')}}" class="list-group-item list-group-item-action border-0 "><i class="icofont-ui-user-group fs-6 me-3"></i>Profile</a>
                                             <button class="list-group-item list-group-item-action border-0 " onclick="logout()"><i class="icofont-logout fs-6 me-3"></i>Signout</button>
-                                            <div>
-                                                <hr class="dropdown-divider border-dark">
-                                            </div>
-                                            <a href="ui-elements/auth-signup.html" class="list-group-item list-group-item-action border-0 "><i class="icofont-contact-add fs-5 me-3"></i>Add personal account</a>
                                         </div>
                                     </div>
                                 </div>

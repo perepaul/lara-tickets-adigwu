@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Enums\UserRoleEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -21,6 +22,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'role' => UserRoleEnum::COMPLAINANT->value,
             'email' => [
                 'required',
                 'string',
@@ -32,8 +34,9 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
         return User::create([
-            'name' => $input['name'],
+            'name' => ucfirst($input['name']),
             'email' => $input['email'],
+            'role' => UserRoleEnum::COMPLAINANT->value,
             'password' => Hash::make($input['password']),
         ]);
     }

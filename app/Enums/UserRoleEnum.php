@@ -6,29 +6,29 @@ use Filament\Support\Contracts\HasColor;
 use Filament\Support\Contracts\HasIcon;
 use Filament\Support\Contracts\HasLabel;
 
-enum TicketStatusEnum: string implements HasLabel, HasColor, HasIcon
+enum UserRoleEnum: string implements HasLabel, HasColor, HasIcon
 {
-    case OPEN = 'open';
-    case CLOSED = 'closed';
+    case AGENT = 'agent';
+    case COMPLAINANT = 'complainant';
 
     public function getLabel(): ?string {
         return match ($this) {
-            self::OPEN => 'Open',
-            self::CLOSED => 'Closed',
+            self::AGENT => 'Agent',
+            self::COMPLAINANT => 'Complainant',
         };
     }
 
     public function getColor(): ?string {
         return match ($this) {
-            self::OPEN => 'success',
-            self::CLOSED => 'danger',
+            self::AGENT => 'warning',
+            self::COMPLAINANT => 'success',
         };
     }
 
     public function getIcon(): ?string {
         return match ($this) {
-            self::OPEN => 'heroicon-m-pencil',
-            self::CLOSED => 'heroicon-m-x-circle',
+            self::AGENT => 'heroicon-m-user',
+            self::COMPLAINANT => 'heroicon-m-user',
         };
     }
 }

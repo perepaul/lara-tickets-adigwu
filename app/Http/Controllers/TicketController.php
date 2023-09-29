@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\TicketStatusEnum;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
+use App\Enums\TicketStatusEnum;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('agent.tickets');
+        $tickets = $request->user()->tickets()->latest()
+        ->paginate(10);
+        return view('user.tickets', compact('tickets'));
     }
 
     /**
@@ -30,6 +33,7 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $request->user()->tickets()->create([
+            'ticketId' => uniqid(),
             'subject' => $request->subject,
             'body' => $request->body,
             'attachment' => $request->attachment,
@@ -41,32 +45,9 @@ class TicketController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ticket $ticket)
+    public function show(Ticket $ticketId)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Ticket $ticket)
-    {
-        //
+        $ticket = Ticket::find($ticketId)->first();
+        return view('ticket-detail', compact('ticket'));
     }
 }

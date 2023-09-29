@@ -53,7 +53,7 @@
 @endsection
 @section('js')
 <!-- Jquery Core Js -->
-<script src="../assets/bundles/libscripts.bundle.js"></script>
+<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 @endsection
 
 </body>

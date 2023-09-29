@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TicketPriorityEnum;
 use App\Enums\TicketStatusEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +21,10 @@ class Ticket extends Model
     ];
 
     public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function agent(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

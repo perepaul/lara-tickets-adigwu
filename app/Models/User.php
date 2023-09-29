@@ -3,8 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\UserRoleEnum;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Permission\Traits\HasRoles;
@@ -21,11 +24,7 @@ class User extends Authenticatable implements FilamentUser
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -43,6 +42,7 @@ class User extends Authenticatable implements FilamentUser
      * @var array<string, string>
      */
     protected $casts = [
+        'role' => UserRoleEnum::class,
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
@@ -51,6 +51,17 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function agents(): HasMany
+    {
+        return $this->hasMany(Ticket::class, 'agent_id', 'id');
+    }
+
+    public function hasRole($role)
+    {
+        return $this->role === $role;
+    }
+
 
     public function canAccessPanel(Panel $panel): bool
     {

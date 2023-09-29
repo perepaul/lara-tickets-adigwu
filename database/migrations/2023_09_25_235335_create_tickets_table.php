@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->foreignUuid('user_id');
+            $table->foreignUuid('agent_id')->nullable();
             $table->string('subject');
+            $table->string('ticketId')->unique();
             $table->longText('body');
             $table->string('attachment')->nullable();
             $table->string('priority');

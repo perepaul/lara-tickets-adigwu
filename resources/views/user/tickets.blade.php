@@ -1,4 +1,4 @@
-@extends('agents.layouts.app')
+@extends('user.layouts.app')
 @section('title', 'Tickets')
 @section('body')
         <!-- Body: Body -->       
@@ -21,30 +21,33 @@
                                 <table id="myProjectTable" class="table table-hover align-middle mb-0" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Tickit Id</th>
+                                            <th>Ticket Id</th>
                                             <th>Subject</th>
-                                            <th>Assigned</th> 
+                                            <th>Author</th> 
                                             <th>Created Date</th> 
+                                            <th>Priority</th>   
                                             <th>Status</th>   
                                             <th>Actions</th>  
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @forelse ($tickets as $ticket)
                                         <tr>
                                             <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-0002</a>
+                                                <a href="{{route('agent.ticket-details', $ticket->id)}}" class="fw-bold text-secondary">{{$ticket->ticketId}}</a>
                                             </td>
                                             <td>
-                                               Internet Not Working 
+                                            {{$ticket->subject}}
                                            </td>
                                            <td>
                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar1.jpg')}}" alt="">
-                                               <span class="fw-bold ms-1">Joan Dyer</span>
+                                               <span class="fw-bold ms-1">{{$ticket->user->name}}</span>
                                            </td>
                                            <td>
-                                                12/03/2021
+                                           {{$ticket->created_at->diffForHumans()}}
                                            </td>
-                                           <td><span class="badge bg-warning">In Progress</span></td>
+                                           <td><span class="badge bg-warning">{{$ticket->priority}}</span></td>
+                                           <td><span class="badge bg-warning">{{$ticket->status}}</span></td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
@@ -52,116 +55,12 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @empty
                                         <tr>
-                                            <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-0006</a>
-                                            </td>
-                                            <td>
-                                                Salary Amount wrong 
-                                            </td>
-                                            <td>
-                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar2.jpg')}}" alt="">
-                                                <span class="fw-bold ms-1">Ryan	Randall</span>
-                                            </td>
-                                            <td>
-                                                12/03/2021
-                                           </td>
-                                           <td><span class="badge bg-warning">In Progress</span></td>
-                                             <td>
-                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
-                                                     <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                                 </div>
-                                             </td>
-                                         </tr>
-                                         <tr>
-                                            <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-0004</a>
-                                            </td>
-                                            <td>
-                                               Mouse Not working
-                                            </td>
-                                            <td>
-                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar3.jpg')}}" alt="">
-                                                <span class="fw-bold ms-1">Phil	Glover</span>
-                                            </td>
-                                            <td>
-                                                16/03/2021
-                                           </td>
-                                           <td><span class="badge bg-warning">In Progress</span></td>
-                                             <td>
-                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
-                                                     <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                                 </div>
-                                             </td>
-                                         </tr>
-                                         <tr>
-                                            <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-00011</a>
-                                            </td>
-                                            <td>
-                                                punching time not proper
-                                             </td>
-                                            <td>
-                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar4.jpg')}}" alt="">
-                                                <span class="fw-bold ms-1">Victor Rampling</span>
-                                            </td>
-                                            <td>
-                                                25/02/2021
-                                            </td>
-                                            <td><span class="badge bg-success">Completed</span></td>
-                                             <td>
-                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
-                                                     <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                                 </div>
-                                             </td>
-                                         </tr>
-                                         <tr>
-                                            <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-00021</a>
-                                            </td>
-                                            <td>
-                                                Leave Balance Wrong
-                                              </td>
-                                            <td>
-                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar5.jpg')}}" alt="">
-                                                <span class="fw-bold ms-1">Sally Graham</span>
-                                            </td>
-                                            <td>
-                                                16/02/2021
-                                              </td>
-                                            <td><span class="badge bg-success">Completed</span></td>
-                                             <td>
-                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
-                                                     <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                                 </div>
-                                             </td>
-                                         </tr>
-                                         <tr>
-                                            <td>
-                                                <a href="ticket-detail.html" class="fw-bold text-secondary">#Tc-00041</a>
-                                            </td>
-                                            <td>
-                                                Display Blur
-                                            </td>
-                                            <td>
-                                                <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar6.jpg')}}" alt="">
-                                                <span class="fw-bold ms-1">Robert Anderson</span>
-                                            </td>
-                                            <td>
-                                              18/01/2021
-                                            </td>
-                                            <td><span class="badge bg-success">Completed</span></td>
-                                             <td>
-                                                 <div class="btn-group" role="group" aria-label="Basic outlined example">
-                                                     <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#edittickit"><i class="icofont-edit text-success"></i></button>
-                                                     <button type="button" class="btn btn-outline-secondary deleterow"><i class="icofont-ui-delete text-danger"></i></button>
-                                                 </div>
-                                             </td>
-                                         </tr>
+                                            <td>No Ticket</td>
+                                        </tr>
+                                        @endforelse
+                                        
                                     </tbody>
                                 </table>
                             </div>

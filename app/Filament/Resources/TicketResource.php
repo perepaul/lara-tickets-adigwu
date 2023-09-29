@@ -2,42 +2,52 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\TicketStatusEnum;
-use App\Filament\Resources\TicketResource\Pages;
-use App\Filament\Resources\TicketResource\RelationManagers;
-use App\Models\Ticket;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
+use App\Models\User;
 use Filament\Tables;
+use App\Models\Ticket;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Enums\TicketStatusEnum;
+use Filament\Resources\Resource;
+use App\Enums\TicketPriorityEnum;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\TicketResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\TicketResource\RelationManagers;
 
 class TicketResource extends Resource
 {
     protected static ?string $model = Ticket::class;
-
+    protected static ?string $navigationLabel = 'Manage Tickets';
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('id')
-                    ->maxLength(36),
-                Forms\Components\TextInput::make('title')
+                Forms\Components\TextInput::make('ticketId')
+                    ->label('Ticket Id')
+                    ->default(uniqid())->maxLength(36),
+                Forms\Components\Select::make('user_id')
+                    ->options(User::pluck('name', 'id')->toArray())
+                    ->label('Select Author'),
+                Forms\Components\TextInput::make('subject')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('priority')
+                    ->options(
+                        TicketPriorityEnum::class
+                    )->native(false)
+                    ->required(),
                 Forms\Components\Textarea::make('body')
                     ->required()
                     ->columnSpanFull(),
-                Forms\Components\FileUpload::make('attachment'),
                 Forms\Components\Select::make('status')
-                ->options(
-                    TicketStatusEnum::class
-                )->native(false)
+                    ->options(
+                        TicketStatusEnum::class
+                    )->native(false)
                     ->required(),
+                Forms\Components\FileUpload::make('attachment'),
             ]);
     }
 
@@ -45,14 +55,21 @@ class TicketResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')
+                Tables\Columns\TextColumn::make('ticketId')
+                ->copyable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Author')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('attachment')
+                Tables\Columns\TextColumn::make('subject')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('priority')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->searchable(),
+                    ->badge(),
+                Tables\Columns\SelectColumn::make('agent_id')
+                    ->options(User::pluck('name', 'id')->toArray())
+                    ->label('Assign agent'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -74,14 +91,14 @@ class TicketResource extends Resource
                 ]),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
@@ -89,5 +106,5 @@ class TicketResource extends Resource
             'create' => Pages\CreateTicket::route('/create'),
             'edit' => Pages\EditTicket::route('/{record}/edit'),
         ];
-    }    
+    }
 }
