@@ -56,11 +56,6 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(Ticket::class, 'agent_id', 'id');
     }
 
-    public function hasRole($role)
-    {
-        return $this->role === $role;
-    }
-
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
