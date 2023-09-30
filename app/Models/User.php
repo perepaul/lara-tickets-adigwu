@@ -64,6 +64,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(Ticket::class, 'agent_id', 'id');
     }
+
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);

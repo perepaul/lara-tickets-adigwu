@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use App\Enums\TicketStatusEnum;
 use App\Enums\TicketPriorityEnum;
-use Illuminate\Database\Eloquent\Model;
+use App\Enums\TicketStatusEnum;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Ticket extends Model
 {
