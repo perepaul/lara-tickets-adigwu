@@ -14,9 +14,10 @@ class TicketController extends Controller
     public function index(Request $request)
     {
         $tickets = $request->user()->tickets()
-        ->with('comments')
-        ->latest()
-        ->paginate(10);
+            ->with('comments')
+            ->latest()
+            ->paginate(10);
+
         return view('user.tickets', compact('tickets'));
     }
 
