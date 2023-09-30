@@ -44,7 +44,7 @@
                         <a class="m-link" data-bs-toggle="collapse" data-bs-target="#tikit-Components" href="#"><i class="icofont-ticket"></i> <span>Tickets</span> <span class="arrow icofont-dotted-down ms-auto text-end fs-5"></span></a>
                         <!-- Menu: Sub menu ul -->
                         <ul class="sub-menu collapse" id="tikit-Components">
-                            @if(Auth::User()->role == 'agent')
+                            @if(Auth::User()->role == App\Enums\UserRoleEnum::AGENT)
                                 <li><a class="ms-link" href="{{route('agent.tickets')}}"> <span>View Tickets</span></a></li>
                             @else
                             <li><a class="ms-link" href="{{route('tickets')}}"> <span>View Tickets</span></a></li>
@@ -164,7 +164,7 @@
                             <div class="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center zindex-popover">
                                 <div class="u-info me-2">
                                     <p class="mb-0 text-end line-height-sm "><span class="font-weight-bold">{{ Auth::user()->name }}</span></p>
-                                    <small>{{ Auth::user()->role }} Profile</small>
+                                    <small>{{ ucfirst(Auth::user()->role->value) }} Profile</small>
                                 </div>
                                 <a class="nav-link dropdown-toggle pulse p-0" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static">
                                     <img class="avatar lg rounded-circle img-thumbnail" src="{{asset('assets/images/profile_av.png')}}" alt="profile">

@@ -34,8 +34,8 @@
                                 <div class="d-flex align-items-center">
                                     <div class="avatar lg  rounded-1 no-thumbnail bg-lightblue color-defult"><i class="icofont-user fs-4"></i></div>
                                     <div class="flex-fill ms-4 text-truncate">
-                                        <div class="text-truncate">Created Name</div>
-                                        <span class="fw-bold">Sally Graham</span>
+                                        <div class="text-truncate">Author Name</div>
+                                        <span class="fw-bold">{{ $ticket->user->name }}</span>
                                     </div>
 
                                 </div>
@@ -65,117 +65,7 @@
                                 {{ $ticket->body }}
                             </div>
                         </div>
-                        <div class="row g-3">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="fw-bold mb-3 text-danger">Bug Image Atteched</h6>
-                                        <div class="flex-grow-1">
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg light-danger-bg rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-bug fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">Image3.jpg</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn light-danger-bg text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg light-danger-bg rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-bug fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">Image4.jpg</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn light-danger-bg text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg light-danger-bg rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-bug fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">Image6.jpg</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn light-danger-bg text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg light-danger-bg rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-bug fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">Image11.jpg</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn light-danger-bg text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg light-danger-bg rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-bug fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">Image5.jpg</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn light-danger-bg text-end">Download</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h6 class="fw-bold mb-3 text-danger">Bug File Atteched</h6>
-                                        <div class="flex-grow-1">
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">file1.pdf</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn bg-lightgreen text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">file2.pdf</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn bg-lightgreen text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">file3.pdf</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn bg-lightgreen text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center border-bottom">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">file4.pdf</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn bg-lightgreen text-end">Download</button>
-                                            </div>
-                                            <div class="py-2 d-flex align-items-center">
-                                                <div class="d-flex ms-3 align-items-center flex-fill">
-                                                    <span class="avatar lg bg-lightgreen rounded-circle text-center d-flex align-items-center justify-content-center"><i class="icofont-file-pdf fs-5"></i></span>
-                                                    <div class="d-flex flex-column ps-3">
-                                                        <h6 class="fw-bold mb-0 small-14">file5.pdf</h6>
-                                                    </div>
-                                                </div>
-                                                <button type="button" class="btn bg-lightgreen text-end">Download</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--  -->
                     </div>
                 </div> <!-- Row end  -->
             </div>
@@ -184,58 +74,36 @@
                     <div class="card-body card-body-height py-4">
                         <div class="row">
                             <div class="col-lg-12 col-md-12">
-                                <h6 class="mb-0 fw-bold mb-3">Ticket Chat</h6>
-                                <div class="card mb-2">
-                                    <div class="card-body">
-                                        <div class="post">
-                                            <textarea class="form-control" placeholder="Post" rows="4"></textarea>
-                                            <div class="py-3">
-                                                <a href="#" class="px-3 " title="upload images"><i class="icofont-ui-camera"></i></a>
-                                                <a href="#" class="px-3 " title="upload video"><i class="icofont-video-cam"></i></a>
-                                                <a href="#" class="px-3 " title="Send for signuture"><i class="icofont-pen-alt-2"></i></a>
-                                                <button class="btn btn-primary float-sm-end  mt-2 mt-sm-0">Sent</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> <!-- .Card End -->
+                                <!-- Card End -->
                                 <ul class="list-unstyled res-set">
                                     <li class="card mb-2">
                                         <div class="card-body">
-                                            <div class="d-flex mb-3 pb-3 border-bottom">
-                                                <img class="avatar rounded-circle" src="assets/images/xs/avatar1.jpg" alt="">
-                                                <div class="flex-fill ms-3 text-truncate">
-                                                    <h6 class="mb-0"><span>Nellie Maxwell</span> <span class="text-muted small">posted a status</span></h6>
-                                                    <span class="text-muted">3 hours ago</span>
-                                                </div>
-                                            </div>
                                             <div class="timeline-item-post">
-                                                <h6>Internet Not Working for Last 2 Days</h6>
-                                                <p>On the other hand, if the Internet doesn't work on other devices too, then the problem is most likely with the router or the Internet connection itself</p>
                                                 <div class="mb-2 mt-4">
-                                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="icofont-speech-comments"></i> Comment (2)</a>
+                                                    <a class="me-lg-4 me-2 text-primary" href="#"><i class="icofont-speech-comments"></i> Comment</a>
                                                 </div>
                                                 <div>
+                                                @foreach($ticket->comments as $comment)
                                                     <div class="d-flex mt-3 pt-3 border-top">
-                                                        <img class="avatar rounded-circle" src="assets/images/xs/avatar2.jpg" alt="">
-                                                        <div class="flex-fill ms-3 text-truncate">
-                                                            <p class="mb-0"><span>Zoe Wright</span> <small class="msg-time">1 hour ago</small></p>
-                                                            <span class="text-muted">One good way to fix the router is to restart it.</span>
+                                                        <img class="avatar rounded-circle" src="{{asset('assets/images/xs/avatar2.jpg')}}" alt="">
+                                                        <div class="flex-fill ms-3">
+                                                            <p class="mb-0"><span>{{ $comment->user->name}}</span> <small class="msg-time">{{ $comment->created_at->diffForHumans()}}</small></p>
+                                                            <span class="text-muted">{{ $comment->text}}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="d-flex mt-3 pt-3 border-top">
-                                                        <img class="avatar rounded-circle" src="assets/images/xs/avatar3.jpg" alt="">
-                                                        <div class="flex-fill ms-3 text-truncate">
-                                                            <p class="mb-0"><span>Diane Fisher</span> <small class="msg-time">1 hour ago</small></p>
-                                                            <span class="text-muted">Turn on the modem and one minute later turn on the router. Wait for a few minutes and check”</span>
-                                                        </div>
-                                                    </div>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                            <div class="mt-4">
-                                                <textarea class="form-control" placeholder="Replay"></textarea>
+                                            <div class="form-group mt-4">
+                                                <form action="{{ route('create-comments', $ticket->id) }}" method="post">
+                                                    @csrf
+                                                    <textarea class="form-control" name="text" placeholder="Type a comment"></textarea>
+                                                    <button class="btn btn-primary float-sm-end  mt-5 mt-sm-0">Sent</button>
+                                                </form>
                                             </div>
                                         </div>
-                                    </li> <!-- .Card End -->
+                                    </li>
+                                    <!-- Card End -->
                                 </ul>
                             </div>
                         </div>
@@ -387,7 +255,7 @@
 @endsection
 @section('js')
 <!-- Jquery Core Js -->
-<script src="assets/bundles/libscripts.bundle.js"></script>
+<script src="{{asset('assets/bundles/libscripts.bundle.js')}}"></script>
 <!-- Jquery Page Js -->
 <script src="../js/template.js"></script>
 @endsection
