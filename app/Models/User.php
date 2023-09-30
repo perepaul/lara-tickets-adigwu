@@ -46,6 +46,15 @@ class User extends Authenticatable implements FilamentUser
         'password' => 'hashed',
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'role' => UserRoleEnum::ADMIN->value,
+    ];
+
     public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
@@ -54,6 +63,10 @@ class User extends Authenticatable implements FilamentUser
     public function agents(): HasMany
     {
         return $this->hasMany(Ticket::class, 'agent_id', 'id');
+    }
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function canAccessPanel(Panel $panel): bool

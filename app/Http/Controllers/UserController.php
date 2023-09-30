@@ -60,7 +60,7 @@ class UserController extends Controller
             'dob' => $request->dob,
         ]);
 
-        return view('profile');
+        return view('user.profile');
     }
 
     /**

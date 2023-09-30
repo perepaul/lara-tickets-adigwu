@@ -13,9 +13,10 @@ class TicketController extends Controller
      */
     public function index(Request $request)
     {
-        $tickets = $request->user()->tickets()->latest()
-            ->paginate(10);
-
+        $tickets = $request->user()->tickets()
+        ->with('comments')
+        ->latest()
+        ->paginate(10);
         return view('user.tickets', compact('tickets'));
     }
 
@@ -40,6 +41,8 @@ class TicketController extends Controller
             'priority' => $request->priority,
             'status' => TicketStatusEnum::OPEN->value,
         ]);
+
+        return back();
     }
 
     /**
@@ -49,6 +52,6 @@ class TicketController extends Controller
     {
         $ticket = Ticket::find($ticketId)->first();
 
-        return view('ticket-detail', compact('ticket'));
+        return view('user.ticket-detail', compact('ticket'));
     }
 }

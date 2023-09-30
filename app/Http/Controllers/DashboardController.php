@@ -16,7 +16,7 @@ class DashboardController extends Controller
         // get users role
 
         $userRole = Auth::user()->role;
-        if ($userRole == UserRoleEnum::AGENT->value) {
+        if ($userRole == UserRoleEnum::AGENT) {
             $tickets = Ticket::where('agent_id', Auth::user()->id)->get();
             $totalTickets = $tickets->count();
             $openTickets = $tickets->where('status', TicketStatusEnum::OPEN)->count();
